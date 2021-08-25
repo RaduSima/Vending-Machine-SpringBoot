@@ -79,7 +79,6 @@ public class BankStorage {
         double currentChange = 0;
         if (neededChange < 0.01) {
             putMoneyInBank();
-            System.out.println("xdddddd");
             return 0;
         }
 
@@ -123,9 +122,7 @@ public class BankStorage {
     }
 
     private void spitOutMoney(List<Double> needeedMoney) {
-        System.out.println("kys");
         for (var currentNeededMoney : needeedMoney) {
-            System.out.println("kys");
             for (var currentMoney : money) {
                 if (currentNeededMoney == currentMoney.getValue()) {
                     currentMoney.setQuantity(currentMoney.getQuantity() - 1);
