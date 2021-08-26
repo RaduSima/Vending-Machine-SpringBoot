@@ -24,7 +24,7 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public Item findById(int theId) throws ItemInexistentException {
+    public Item findById(int theId) {
         Optional<Item> result = itemsRepository.findById(theId);
         if (result.isPresent()) {
             return result.get();

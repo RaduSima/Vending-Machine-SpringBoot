@@ -1,6 +1,6 @@
 package vending.exceptions;
 
-public class InvalidCurrencyException extends Exception {
+public class InvalidCurrencyException extends RuntimeException {
     public InvalidCurrencyException(String message) {
         super(message);
     }

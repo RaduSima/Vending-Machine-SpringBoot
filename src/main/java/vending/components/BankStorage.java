@@ -25,7 +25,7 @@ public class BankStorage {
 
     private final List<Double> moneyCurrentlyProcessing = new ArrayList<>();
 
-    double currentSold = 0;
+    private double currentSold = 0;
 
     @Autowired
     public BankStorage(MoneyService moneyService) {
@@ -50,7 +50,7 @@ public class BankStorage {
     }
 
     // Adds 1 bill or coin to the vending machine
-    public void addMoney(double moneyValue) throws InvalidCurrencyException {
+    public void addMoney(double moneyValue) {
         if (!isValidMoney(moneyValue)) {
             throw new InvalidCurrencyException(
                     "Currency of: " + moneyValue + " does not exist.");
@@ -69,8 +69,7 @@ public class BankStorage {
         return false;
     }
 
-    public double giveChange(Item itemCurrentlySelling)
-            throws NotSufficientChangeException {
+    public double giveChange(Item itemCurrentlySelling) {
         syncMoneyWithDatabase();
 
         // initialise needed change

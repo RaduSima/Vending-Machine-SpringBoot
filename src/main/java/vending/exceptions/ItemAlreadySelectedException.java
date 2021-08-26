@@ -1,7 +1,7 @@
 package vending.exceptions;
 
 public class ItemAlreadySelectedException
-        extends Exception {
+        extends RuntimeException {
     public ItemAlreadySelectedException(String message) {
         super(message);
     }

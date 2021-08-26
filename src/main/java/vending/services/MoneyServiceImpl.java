@@ -24,7 +24,7 @@ public class MoneyServiceImpl implements MoneyService {
     }
 
     @Override
-    public Money findById(int theId) throws CurrencyInexistentException {
+    public Money findById(int theId) {
         Optional<Money> result = moneyRepository.findById(theId);
         if (result.isPresent()) {
             return result.get();

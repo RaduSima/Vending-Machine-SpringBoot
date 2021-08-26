@@ -9,7 +9,7 @@ import java.util.List;
 public interface MoneyService {
     public List<Money> findAll();
 
-    public Money findById(int theId) throws CurrencyInexistentException;
+    public Money findById(int theId);
 
     public void save(Money theMoney);
 

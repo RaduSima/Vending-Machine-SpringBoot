@@ -35,13 +35,12 @@ public class VendingStorage {
         return items;
     }
 
-    public Item showItem(int itemId) throws ItemInexistentException {
+    public Item showItem(int itemId) {
         return itemsService.findById(itemId);
     }
 
     // gets an item from the items map, based on its UID
-    public Item getItem(int UID)
-            throws SoldOutException, ItemInexistentException {
+    public Item getItem(int UID) {
         syncItemsWithDatabase();
         for (var currentItem : items) {
             // if UID exists

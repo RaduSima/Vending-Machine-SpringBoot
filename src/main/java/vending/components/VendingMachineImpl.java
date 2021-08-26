@@ -26,7 +26,7 @@ public class VendingMachineImpl implements IVendingMachine {
     }
 
     @Override
-    public Item showItem(int itemId) throws ItemInexistentException {
+    public Item showItem(int itemId) {
         return vendingStorage.showItem(itemId);
     }
 
@@ -36,9 +36,7 @@ public class VendingMachineImpl implements IVendingMachine {
     }
 
     @Override
-    public Item selectProduct(int UID)
-            throws SoldOutException, ItemInexistentException,
-            ItemAlreadySelectedException {
+    public Item selectProduct(int UID) {
         if (isSellingItem) {
             throw new ItemAlreadySelectedException("There is already an item " +
                     "selected. You cannot select another until payment is " +
@@ -52,10 +50,7 @@ public class VendingMachineImpl implements IVendingMachine {
 
 
     @Override
-    public String processPayment(double moneyValue)
-            throws NoItemSelectedException, InvalidCurrencyException,
-            NotSufficientChangeException {
-        System.out.println("kysssssssss");
+    public String processPayment(double moneyValue) {
         if (!isSellingItem) {
             throw new NoItemSelectedException("No item selected: please " +
                     "select an item first.");
@@ -67,18 +62,19 @@ public class VendingMachineImpl implements IVendingMachine {
         }
 
         bank.addMoney(moneyValue);
-        System.out.println(bank.getCurrentSold() + " " +
-                vendingStorage.getItemCurrentlySelling().getPrice());
 
         if (bank.getCurrentSold() >=
                 vendingStorage.getItemCurrentlySelling().getPrice()) {
-            System.out.println("kys");
             try {
                 double change =
-                        bank.giveChange(vendingStorage.getItemCurrentlySelling());
-                Item item = returnProduct(vendingStorage.getItemCurrentlySelling());
-                return "Here is your product: " + item.toStringWithoutQunatity() +
-                        "\nHere is your change: " + String.format("%.2f", change);
+                        bank.giveChange(
+                                vendingStorage.getItemCurrentlySelling());
+                Item item =
+                        returnProduct(vendingStorage.getItemCurrentlySelling());
+                return "Here is your product: " +
+                        item.toStringWithoutQunatity() +
+                        "\nHere is your change: " +
+                        String.format("%.2f", change);
             } catch (NotSufficientChangeException e) {
                 resetProcessingState();
                 throw e;
@@ -88,7 +84,7 @@ public class VendingMachineImpl implements IVendingMachine {
         return "You have introduced " + moneyValue + ". You need to " +
                 "introduce " + String.format("%.2f",
                 vendingStorage.getItemCurrentlySelling().getPrice() -
-                        moneyValue) + " more.";
+                        bank.getCurrentSold()) + " more.";
     }
 
     @Override
