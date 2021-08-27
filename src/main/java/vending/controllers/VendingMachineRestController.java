@@ -38,7 +38,7 @@ public class VendingMachineRestController {
         return vendingMachine.showMoney();
     }
 
-    @GetMapping("/items/select")
+    @PostMapping("/items/select")
     public Item selectItem(@RequestBody int itemId) {
         return vendingMachine.selectProduct(itemId);
     }

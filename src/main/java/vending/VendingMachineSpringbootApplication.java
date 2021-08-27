@@ -8,7 +8,5 @@ public class VendingMachineSpringbootApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VendingMachineSpringbootApplication.class, args);
-        System.out.println("IT'S RUNNING!");
     }
-
 }
