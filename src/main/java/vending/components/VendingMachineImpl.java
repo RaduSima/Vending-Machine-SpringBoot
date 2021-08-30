@@ -72,7 +72,7 @@ public class VendingMachineImpl implements IVendingMachine {
                 Item item =
                         returnProduct(vendingStorage.getItemCurrentlySelling());
                 return "Here is your product: " +
-                        item.toStringWithoutQunatity() +
+                        item.toStringWithoutQuantity() +
                         "\nHere is your change: " +
                         String.format("%.2f", change);
             } catch (NotSufficientChangeException e) {

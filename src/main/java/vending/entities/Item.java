@@ -83,7 +83,7 @@ public class Item {
                 ", quantity = " + quantity;
     }
 
-    public String toStringWithoutQunatity() {
+    public String toStringWithoutQuantity() {
         return "Item:" +
                 " id = " + id +
                 ", name = '" + name + '\'' +

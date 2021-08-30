@@ -8,11 +8,6 @@ import vending.entities.Money;
 
 import java.util.List;
 
-// TODO REFACTOR LINKS AND MAKE SOME GET REQUESTS INTO POST
-// TODO CREATE MONEY CONTROLLER
-// TODO CHECK IF CODE NEEDS ANY MORE REFACTORING
-// TODO README WITH USAGE INSTRUCTIONS
-
 @RestController
 public class VendingMachineRestController {
     private final IVendingMachine vendingMachine;
@@ -38,12 +33,12 @@ public class VendingMachineRestController {
         return vendingMachine.showMoney();
     }
 
-    @PostMapping("/items/select")
+    @DeleteMapping("/items")
     public Item selectItem(@RequestBody int itemId) {
         return vendingMachine.selectProduct(itemId);
     }
 
-    @GetMapping("/money/add")
+    @PutMapping("/money")
     public String processPayment(@RequestBody double moneyValue) {
         return vendingMachine.processPayment(moneyValue);
     }

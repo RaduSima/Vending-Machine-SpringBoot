@@ -24,5 +24,6 @@ public interface IVendingMachine {
     // Returns an item to the client
     Item returnProduct(Item item);
 
+    // Gets the vending machine out of the item selling state
     void resetProcessingState();
 }

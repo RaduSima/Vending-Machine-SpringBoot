@@ -49,7 +49,6 @@ public class BankStorage {
         return money;
     }
 
-    // Adds 1 bill or coin to the vending machine
     public void addMoney(double moneyValue) {
         if (!isValidMoney(moneyValue)) {
             throw new InvalidCurrencyException(
